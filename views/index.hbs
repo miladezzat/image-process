@@ -2,9 +2,9 @@
 <p>This website compress and process your image and convert their format live</p>
 
 <ol>
-    <li>baseUrl/url?`imageUrl=url`</li>
+    <li>https://images-process.herokuapp.com/url?imageUrl=YourImage_URL</li>
     <dl>
-        <dd>Options:
+        <dd>Options in query:
             imageWidth // number of pixels
             imageHeight // number of pixels
             imageFormat // png, webp, jpg, jpeg</dd>
@@ -13,12 +13,20 @@
 </ol>
 
 <ol>
-    <li>baseUrl/data-base64?`imageUrl=url`</li>
+    <li>https://images-process.herokuapp.com/data-base64?imageUrl=YourImage_URL</url></li>
     <dl>
-        <dd>Options:
+        <dd>Options in query:
             imageWidth // number of pixels
             imageHeight // number of pixels
             imageFormat // png, webp, jpg, jpeg</dd>
         <dd>response will be an base64 data you can use it in image src directly</dd>
     </dl>
 </ol>
+
+<div>
+    <h1>Examples:</h1>
+    <code>
+        <p>Http Method: Get</p>
+        <p>URL: https://images-process.herokuapp.com/url?imageUrl=https://st.depositphotos.com/1428083/2946/i/950/depositphotos_29460297-stock-photo-bird-cage.jpg&format=webp</p>
+    </code>
+</div>
