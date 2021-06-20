@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -16,12 +17,18 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+  console.log({ host: req.hostname });
+  console.log({ headers: req.headers });
+  next();
+});
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexController);
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+// eslint-disable-next-line no-unused-vars
+app.use((req, res, next, error) => {
   next(createError(404));
 });
 

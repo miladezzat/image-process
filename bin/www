@@ -1,9 +1,11 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 
 /**
  * Module dependencies.
  */
 
+// eslint-disable-next-line import/order
 const app = require('../app');
 const debug = require('debug')('image-process:server');
 const http = require('http');
@@ -11,24 +13,6 @@ const http = require('http');
 /**
  * Get port from environment and store in Express.
  */
-
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -48,6 +32,23 @@ function normalizePort(val) {
 
   return false;
 }
+
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+const server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port, () => {
+  console.log(`App running on port: ${port}`);
+});
 
 /**
  * Event listener for HTTP server "error" event.
@@ -88,3 +89,6 @@ function onListening() {
     : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
 }
+
+server.on('error', onError);
+server.on('listening', onListening);
