@@ -20,6 +20,9 @@ app.use(cookieParser());
 app.use((req, res, next) => {
   console.log({ host: req.hostname });
   console.log({ headers: req.headers });
+  console.log({ userIp: req.connection.remoteAddress });
+  console.log({ userIp: req.ip });
+
   next();
 });
 
