@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+const os = require('os');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -17,8 +18,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+const MACAddress = os.networkInterfaces();
+const secondKey = Object.keys(MACAddress)[1];
+
+console.log({ MACAddress: MACAddress[secondKey][0].mac });
+console.log({ MACAddress: JSON.stringify(MACAddress, null, 2) });
+
 app.use((req, res, next) => {
-  console.log({ host: req.hostname });
   console.log({ headers: req.headers });
 
   next();
