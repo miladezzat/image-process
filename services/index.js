@@ -15,7 +15,7 @@ const sharpImage = async (args) => {
   const {
     imageUrl,
     toBuffer = false,
-    imageFormat = 'png',
+    imageFormat = 'webp',
     imageWidth = null,
     imageHeight = null,
   } = args;

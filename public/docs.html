@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs | Image Processing</title>
+</head>
+
+<body>
+    <h1>Images Processing</h1>
+    <p>This website compress and process your image and convert their format live</p>
+
+    <ol>
+        <li>https://images-process.herokuapp.com/url?imageUrl=YourImage_URL</li>
+        <dl>
+            <dd>Options in query:<br>
+                imageWidth // number of pixels<br>
+                imageHeight // number of pixels<br>
+                imageFormat // png, webp, jpg, jpeg</dd>
+            <dd>response will be an image you can use it in image src directly</dd>
+        </dl>
+    </ol>
+
+    <ol>
+        <li>https://images-process.herokuapp.com/data-base64?imageUrl=YourImage_URL</url>
+        </li>
+        <dl>
+            <dd>Options in query: <br>
+                imageWidth // number of pixels<br>
+                imageHeight // number of pixels<br>
+                imageFormat // png, webp, jpg, jpeg</dd>
+            <dd>response will be an base64 data you can use it in image src directly {image: 'data'} </dd>
+        </dl>
+    </ol>
+
+    <div>
+        <h1>Examples:</h1>
+        <code>
+        <p>You can use the second link only direct in browser, and you can use http request for both ways by  Method: Get or in src attribute og image tag</p>
+        <p>URL: https://images-process.herokuapp.com/url?imageUrl=https://st.depositphotos.com/1428083/2946/i/950/depositphotos_29460297-stock-photo-bird-cage.jpg&imageFormat=webp</p>
+    </code>
+    </div>
+</body>
+
+</html>

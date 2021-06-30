@@ -5,42 +5,118 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Process</title>
+    <title>Image Processing</title>
+    <script>
+        function sendUsingUrl() {
+            try {
+                const baseUrl = 'https://images-process.herokuapp.com/url';
+                const imageUrlInput = document.getElementById('imageUrl');
+
+
+                let imageFormat = 'webP';
+                const imageFormatInput = document.getElementById('imageFormat');
+
+                if (imageFormatInput.value) {
+                    imageFormat = imageFormatInput.value;
+                }
+
+                let url = `${baseUrl}?imageUrl=${imageUrlInput.value}&imageFormat=${imageFormat}`;
+
+                const imageWidthInput = document.getElementById('imageWidth');
+                if (imageWidthInput.value) {
+                    url += `&imageWidth=${imageWidthInput.value}`
+                }
+
+                const imageHeightInput = document.getElementById('imageHeigth');
+                if (imageHeightInput.value) {
+                    url += `&imageHeigth=${imageHeightInput.value}`
+                }
+
+                if (imageUrlInput.value) {
+                    document.getElementById('view').innerHTML = `
+                    <img src=${url} /> 
+                    <br/>
+                    <a href=${url} download="image-proccessed.${imageFormat}"> Download </a>
+                `
+                }
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+
+        function sendProcessingImage() {
+            const baseUrl = 'https://images-process.herokuapp.com/data-base64';
+            const imageUrlInput = document.getElementById('imageUrlProcessingImage');
+
+
+            let imageFormat = 'webp';
+            const imageFormatInput = document.getElementById('imageFormatProcessingImage');
+            if (imageFormatInput.value) {
+                imageFormat = imageFormatInput.value;
+            }
+
+            let url = `${baseUrl}?imageUrl=${imageUrlInput.value}&imageFormat=${imageFormat}`;
+
+            const imageWidthInput = document.getElementById('imageWidthProcessingImage');
+            if (imageWidthInput.value) {
+                url += `&imageWidth=${imageWidthInput.value}`
+            }
+
+            const imageHeightInput = document.getElementById('imageHeightProcessingImage');
+            if (imageHeightInput.value) {
+                url += `&imageHeight=${imageHeightInput.value}`
+            }
+
+            if (imageUrlInput.value) {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+
+                        document.getElementById('view-process-data').innerHTML = `
+                            <img src='${data.image}' /> 
+                            <br/>
+                            <a href='${data.image}' download="image-proccessed.${imageFormat}"> Download </a>
+                            `
+                    });
+            }
+        }
+    </script>
 </head>
 
 <body>
-    <h1>Images Process</h1>
-    <p>This website compress and process your image and convert their format live</p>
-
-    <ol>
-        <li>https://images-process.herokuapp.com/url?imageUrl=YourImage_URL</li>
-        <dl>
-            <dd>Options in query:<br>
-                imageWidth // number of pixels<br>
-                imageHeight // number of pixels<br>
-                imageFormat // png, webp, jpg, jpeg</dd>
-            <dd>response will be an image you can use it in image src directly</dd>
-        </dl>
-    </ol>
-
-    <ol>
-        <li>https://images-process.herokuapp.com/data-base64?imageUrl=YourImage_URL</url>
-        </li>
-        <dl>
-            <dd>Options in query: <br>
-                imageWidth // number of pixels<br>
-                imageHeight // number of pixels<br>
-                imageFormat // png, webp, jpg, jpeg</dd>
-            <dd>response will be an base64 data you can use it in image src directly</dd>
-        </dl>
-    </ol>
+    <a href="./docs.html" target="_blank">Docs</a>
 
     <div>
-        <h1>Examples:</h1>
-        <code>
-        <p>You can use the second link only direct in browser, and you can use http request for both ways by  Method: Get or in src attribute og image tag</p>
-        <p>URL: https://images-process.herokuapp.com/url?imageUrl=https://st.depositphotos.com/1428083/2946/i/950/depositphotos_29460297-stock-photo-bird-cage.jpg&imageFormat=webp</p>
-    </code>
+        <h1>First Way (url) </h1>
+        imageUrl: <input type="url" id="imageUrl" placeholder="image url" />
+        <br />
+        imageFormat: <input type="number" id="imageFormat" />
+        <br />
+        imageWidth: <input type="number" id="imageWidth" />
+        <br />
+        imageHeight: <input type="text" id="imageHeigth" />
+        <br />
+        <button onclick="sendUsingUrl();">Send</button>
+        <hr />
+        <div id="view"></div>
+    </div>
+    <div>
+        <hr />
+        <h1>Sending Way (data-base64)</h1>
+        imageUrl: <input type="url" id="imageUrlProcessingImage" placeholder="image url" />
+        <br />
+        imageWidth: <input type="number" id="imageWidthProcessingImage" />
+        <br />
+        imageHeight: <input type="number" id="imageHeightProcessingImage" />
+        <br />
+        imageFormat: <input type="text" id="imageFormatProcessingImage" />
+        <br />
+        <button onclick="sendProcessingImage();">Send</button>
+        <hr />
+        <div id="view-process-data"></div>
+
     </div>
 </body>
 

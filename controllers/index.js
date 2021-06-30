@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 router.get('/data-base64', async (req, res) => {
   const image = await indexService.processImageAsBase64(req.query);
 
-  res.send(`data:image/png;base64, ${image}`);
+  res.send({ image: `data:image/png;base64, ${image}` });
 });
 
 router.get('/url', async (req, res) => {
