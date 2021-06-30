@@ -12,7 +12,7 @@
     <script>
         function sendUsingUrl() {
 
-            const baseUrl = 'http://localhost:3000/url';
+            const baseUrl = 'https://images-process.herokuapp.com/url';
             const imageUrlInput = document.getElementById('imageUrl');
 
 
@@ -37,7 +37,7 @@
 
             if (imageUrlInput.value) {
                 document.getElementById('view').innerHTML = `
-                    <div class="">
+                    <div class="card">
                         <img src=${url} class="img-fluid w-100"/> 
                     </div>
                     <a class="btn btn-success mt-1" href=${url} download="image-proccessed.${imageFormat}"> Download </a>
@@ -48,7 +48,7 @@
         }
 
         function sendProcessingImage() {
-            const baseUrl = 'http://localhost:3000/data-base64';
+            const baseUrl = 'https://images-process.herokuapp.com/data-base64';
             const imageUrlInput = document.getElementById('imageUrlProcessingImage');
 
 
@@ -74,7 +74,7 @@
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data);
+                        console.log(JSON.stringify(data, null, 2));
 
                         document.getElementById('view-process-data').innerHTML = `
                             <div class="card">
@@ -82,7 +82,7 @@
                             </div>
                             <a class="btn btn-success mt-1" href='${data.image}' download="image-proccessed.${imageFormat}"> Download </a>
                             `
-                    });
+                    });                    
             }
         }
     </script>
@@ -146,7 +146,8 @@
                     placeholder="ex: png, webp, jpg jpeg" value="webp" />
 
                 <label class="form-label" for="imageWidthProcessingImage">imageWidth:</label>
-                <input class="form-control" type="number" id="imageWidthProcessingImage" placeholder="ex: 1000, 200" value="200" />
+                <input class="form-control" type="number" id="imageWidthProcessingImage" placeholder="ex: 1000, 200"
+                    value="200" />
 
                 <label class="form-label" for="imageHeightProcessingImage">imageHeight: </label>
                 <input class="form-control" type="number" id="imageHeightProcessingImage" placeholder="ex: 1000, 200" />

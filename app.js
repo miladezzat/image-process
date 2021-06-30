@@ -20,16 +20,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-  console.log({ headers: req.headers });
+// app.use((req, res, next) => {
+//   console.log({ headers: req.headers });
 
-  const MACAddress = os.networkInterfaces();
-  const secondKey = Object.keys(MACAddress)[1];
-  console.log({ MACAddress: MACAddress[secondKey][0].mac });
-  console.log({ MACAddress: JSON.stringify(MACAddress, null, 2) });
+//   const MACAddress = os.networkInterfaces();
+//   const secondKey = Object.keys(MACAddress)[1];
+//   console.log({ MACAddress: MACAddress[secondKey][0].mac });
+//   console.log({ MACAddress: JSON.stringify(MACAddress, null, 2) });
 
-  next();
-});
+//   next();
+// });
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexController);
