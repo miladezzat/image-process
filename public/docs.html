@@ -5,43 +5,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/brand.png" type="image/png" sizes="16x16">
     <title>Docs | Image Processing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Images Processing</h1>
-    <p>This website compress and process your image and convert their format live</p>
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./images/brand.png" alt="brand" width="35" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="./docs.html">Docs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <ol>
-        <li>https://images-process.herokuapp.com/url?imageUrl=YourImage_URL</li>
-        <dl>
-            <dd>Options in query:<br>
-                imageWidth // number of pixels<br>
-                imageHeight // number of pixels<br>
-                imageFormat // png, webp, jpg, jpeg</dd>
-            <dd>response will be an image you can use it in image src directly</dd>
-        </dl>
-    </ol>
+    <div class="container">
+        <h1>Images Processing</h1>
+        <p>This website compress and process your image and convert their format live</p>
 
-    <ol>
-        <li>https://images-process.herokuapp.com/data-base64?imageUrl=YourImage_URL</url>
-        </li>
-        <dl>
-            <dd>Options in query: <br>
-                imageWidth // number of pixels<br>
-                imageHeight // number of pixels<br>
-                imageFormat // png, webp, jpg, jpeg</dd>
-            <dd>response will be an base64 data you can use it in image src directly {image: 'data'} </dd>
-        </dl>
-    </ol>
+        <ol>
+            <li>https://images-process.herokuapp.com/url?imageUrl=YourImage_URL</li>
+            <dl>
+                <dd>Options in query:<br>
+                    imageWidth // number of pixels<br>
+                    imageHeight // number of pixels<br>
+                    imageFormat // png, webp, jpg, jpeg</dd>
+                <dd>response will be an image you can use it in image src directly</dd>
+            </dl>
+        </ol>
 
-    <div>
-        <h1>Examples:</h1>
-        <code>
-        <p>You can use the second link only direct in browser, and you can use http request for both ways by  Method: Get or in src attribute og image tag</p>
-        <p>URL: https://images-process.herokuapp.com/url?imageUrl=https://st.depositphotos.com/1428083/2946/i/950/depositphotos_29460297-stock-photo-bird-cage.jpg&imageFormat=webp</p>
-    </code>
+        <ol>
+            <li>https://images-process.herokuapp.com/data-base64?imageUrl=YourImage_URL</url>
+            </li>
+            <dl>
+                <dd>Options in query: <br>
+                    imageWidth // number of pixels<br>
+                    imageHeight // number of pixels<br>
+                    imageFormat // png, webp, jpg, jpeg</dd>
+                <dd>response will be an base64 data you can use it in image src directly {image: 'data'} </dd>
+            </dl>
+        </ol>
+
+        <div>
+            <h1>Examples:</h1>
+            <code>
+                <p>You can use the second link only direct in browser, and you can use http request for both ways by  Method: Get or in src attribute og image tag</p>
+                <p>URL: https://images-process.herokuapp.com/url?imageUrl=https://st.depositphotos.com/1428083/2946/i/950/depositphotos_29460297-stock-photo-bird-cage.jpg&imageFormat=webp</p>
+            </code>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
